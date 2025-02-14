@@ -15,7 +15,7 @@ pip install -r requirements.txt
 
 Would help to have a venv too
 """
-os.getenv("makesuite")
+os.getenv("makersuite")
 genai.configure(api_key="makersuite")
 model = genai.GenerativeModel('gemini-1.5-flash')
 
