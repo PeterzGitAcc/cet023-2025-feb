@@ -2,7 +2,7 @@ from flask import Flask
 from flask import request, render_template
 import google.generativeai as genai
 import os
-
+from textblob import TextBlob
 
 """
 https://flask.palletsprojects.com/en/stable/quickstart/
@@ -36,6 +36,17 @@ def gemini():
     q = request.form.get("q")
     r = model.generate_content(q)
     return(render_template("gemini.html",r= r.candidates[0].content.parts[0].text))
+
+@app.route("/sentiment",methods=["GET","POST"])
+def sentiment():
+    return render_template("sentiment.html")
+
+@app.route("/textblob_result",methods=["GET","POST"])
+def textblob_result():
+    q = request.form.get("q")
+    r = TextBlob(q).sentiment
+    return(render_template("textblob_result.html",r=r ))
+
 
 if __name__ == "__main__":
     app.run()
