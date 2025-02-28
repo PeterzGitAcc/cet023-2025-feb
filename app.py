@@ -4,17 +4,6 @@ import google.generativeai as genai
 import os
 from textblob import TextBlob
 
-"""
-https://flask.palletsprojects.com/en/stable/quickstart/
-https://blog.miguelgrinberg.com/post/why-do-we-pass-name-to-the-flask-class
-WSGI protocol: https://wsgi.readthedocs.io/en/latest/what.html 
-'ter' : built in convenience from python to help with code
-Style for flask: all webpages in templats and everything else in static
-
-pip install -r requirements.txt
-
-Would help to have a venv too
-"""
 api = os.getenv("makersuite")
 genai.configure(api_key=api)
 model = genai.GenerativeModel('gemini-1.5-flash')
